@@ -2,13 +2,18 @@
     box-sizing: border-box;
 }
 
+body {
+    display: grid;
+    justify-content: center;
+}
+
 #container {
     display: grid;
-    grid-template-columns: repeat(8, auto);
     width: 960px;
+    grid-template-columns: repeat(16, auto);
 }
 
 .boxes {
-    border: 5px solid red;
-    height: 200px;
+    height: 45px;
+    border: 2px solid black;
 }
