@@ -33,23 +33,21 @@
 
             addDivs(numberOfDivs);
 
-            // Random RGB color for each pass through grid
-
             const boxes = document.querySelectorAll('.boxes');
             boxes.forEach((box) => {
                 box.addEventListener('mouseover', () => {
+                    // Random RGB color for each pass through grid
                     let x = Math.floor(Math.random() * 256);
                     let y = Math.floor(Math.random() * 256);
                     let z = Math.floor(Math.random() * 256);
                     let bgColor = "rgb(" + x + "," + y + "," + z + ")";
   
-                    box.style.background = bgColor;
+                    box.style.background = bgColor;                                    
                 });
-
                 box.addEventListener('mouseout', () => {
                 box.style.backgroundColor = 'white';
                 });
-                
+
             });
         }
 
@@ -59,6 +57,8 @@
          button.addEventListener('click', gridPrompt);
 
         function gridPrompt() {
+            container.innerHTML = "";
+
             const userInput = prompt("Enter a number between 1-100", 16);
             
             if (userInput < 1 || userInput > 100) {
@@ -83,7 +83,13 @@
             const boxes = document.querySelectorAll('.boxes');
             boxes.forEach((box) => {
                 box.addEventListener('mouseover', () => {
-                box.style.backgroundColor = '#fd077a';
+                    // Random RGB color for each pass through grid
+                    let x = Math.floor(Math.random() * 256);
+                    let y = Math.floor(Math.random() * 256);
+                    let z = Math.floor(Math.random() * 256);
+                    let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  
+                    box.style.background = bgColor;                                    
                 });
                 box.addEventListener('mouseout', () => {
                 box.style.backgroundColor = 'white';
