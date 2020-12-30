@@ -34,26 +34,28 @@
             addDivs(numberOfDivs);
 
             const boxes = document.querySelectorAll('.boxes');
+            let x = 90;
             boxes.forEach((box) => {
                 box.addEventListener('mouseover', () => {
                     // Random RGB color for each pass through grid
-                    let x = Math.floor(Math.random() * 256);
-                    let y = Math.floor(Math.random() * 256);
-                    let z = Math.floor(Math.random() * 256);
-                    let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+                    // let x = Math.floor(Math.random() * 256);
+                    // let y = Math.floor(Math.random() * 256);
+                    // let z = Math.floor(Math.random() * 256);
+                    // let bgColor = "rgb(" + x + "," + y + "," + z + ")";
   
-                    box.style.background = bgColor;                                    
+                    // box.style.background = bgColor;
+                    
+                    // Each pass adds 10% of black
+                    x -= 10;
+                    let bgColor = "hsl(350, 100%, " + x + "%)";
+                    box.style.background = bgColor;                                                    
                 });
-                box.addEventListener('mouseout', () => {
-                box.style.backgroundColor = 'white';
-                });
-
             });
         }
 
         defaultView(defaultInput);
 
-        // let user set grid size
+        // let user set grid size0
          button.addEventListener('click', gridPrompt);
 
         function gridPrompt() {
@@ -90,9 +92,6 @@
                     let bgColor = "rgb(" + x + "," + y + "," + z + ")";
   
                     box.style.background = bgColor;                                    
-                });
-                box.addEventListener('mouseout', () => {
-                box.style.backgroundColor = 'white';
                 });
             });
         }
