@@ -7,7 +7,7 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    <button id="button">Change grid</button>
+    <button id="button">Click to set grid size</button>
     <div id="container">
 
     </div>
@@ -16,37 +16,70 @@
         const container = document.getElementById('container');
         const button = document.getElementById('button');
 
-        button.addEventListener('click', gridPrompt);
+        // load page with 16*16 grid
+        let defaultInput = 16;
+        function defaultView(defaultInput) {
+            container.style.gridTemplateColumns = "repeat(" + defaultInput +", auto)";
+
+            let numberOfDivs = defaultInput*defaultInput;
+        
+            function addDivs(numberOfDivs) {
+                for (let i = 0; i < numberOfDivs; i++) {
+                    let div = document.createElement('div');
+                    div.classList.add('boxes');
+                    container.appendChild(div);
+                }
+            }
+
+            addDivs(numberOfDivs);
+
+            const boxes = document.querySelectorAll('.boxes');
+            boxes.forEach((box) => {
+                box.addEventListener('mouseover', () => {
+                box.style.backgroundColor = '#fd077a';
+                });
+                box.addEventListener('mouseout', () => {
+                box.style.backgroundColor = 'white';
+                });
+            });
+        }
+
+        defaultView(defaultInput);
+
+        // let user set grid size
+         button.addEventListener('click', gridPrompt);
 
         function gridPrompt() {
             const userInput = prompt("Enter a number between 1-100", 16);
+            
             if (userInput < 1 || userInput > 100) {
                 alert("Please enter a valid number (1-100)");
                 return;
             }
-            container.style.gridTemplateColumns = "repeat(" + userInput +", auto";
 
-            let numberOfDivs = userInput*userInput;
+            container.style.gridTemplateColumns = "repeat(" + userInput +", auto)";
+
+            let newDivs = userInput*userInput;
         
-        function addDivs(numberOfDivs) {
-            for (let i = 0; i < numberOfDivs; i++) {
-                let div = document.createElement('div');
-                div.classList.add('boxes');
-                container.appendChild(div);
+            function addNewDivs(newDivs) {
+                for (let i = 0; i < newDivs; i++) {
+                    let div = document.createElement('div');
+                    div.classList.add('boxes');
+                    container.appendChild(div);
+                }
             }
-        }
 
-        addDivs(numberOfDivs);
+            addNewDivs(newDivs);
 
-        const boxes = document.querySelectorAll('.boxes');
-        boxes.forEach((box) => {
-        box.addEventListener('mouseover', () => {
-            box.style.backgroundColor = '#fd077a';
+            const boxes = document.querySelectorAll('.boxes');
+            boxes.forEach((box) => {
+                box.addEventListener('mouseover', () => {
+                box.style.backgroundColor = '#fd077a';
+                });
+                box.addEventListener('mouseout', () => {
+                box.style.backgroundColor = 'white';
+                });
             });
-        box.addEventListener('mouseout', () => {
-            box.style.backgroundColor = 'white';
-            });
-        });
         }
 
     </script>
