@@ -19,7 +19,11 @@
         button.addEventListener('click', gridPrompt);
 
         function gridPrompt() {
-            const userInput = prompt("Enter a number less than 100");
+            const userInput = prompt("Enter a number between 1-100", 16);
+            if (userInput < 1 || userInput > 100) {
+                alert("Please enter a valid number (1-100)");
+                return;
+            }
             container.style.gridTemplateColumns = "repeat(" + userInput +", auto";
 
             let numberOfDivs = userInput*userInput;
@@ -37,13 +41,12 @@
         const boxes = document.querySelectorAll('.boxes');
         boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
-            box.style.backgroundColor = 'pink';
+            box.style.backgroundColor = '#fd077a';
             });
         box.addEventListener('mouseout', () => {
             box.style.backgroundColor = 'white';
             });
         });
-
         }
 
     </script>

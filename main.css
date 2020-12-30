@@ -16,10 +16,11 @@ body {
 #container {
     display: grid;
     width: 960px;
-    border: 2px solid black;
+    height: 960px;
+    border: 1px solid black;
 }
 
 .boxes {
-    height: 45px;
-    border: 2px solid black;
+    height: auto;
+    border: 1px solid black;
 }
