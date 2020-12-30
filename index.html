@@ -7,13 +7,22 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
+    <button id="button">Change grid</button>
     <div id="container">
 
     </div>
 
     <script>
         const container = document.getElementById('container');
-        let numberOfDivs = 16*16;
+        const button = document.getElementById('button');
+
+        button.addEventListener('click', gridPrompt);
+
+        function gridPrompt() {
+            const userInput = prompt("Enter a number less than 100");
+            container.style.gridTemplateColumns = "repeat(" + userInput +", auto";
+
+            let numberOfDivs = userInput*userInput;
         
         function addDivs(numberOfDivs) {
             for (let i = 0; i < numberOfDivs; i++) {
@@ -25,7 +34,6 @@
 
         addDivs(numberOfDivs);
 
-
         const boxes = document.querySelectorAll('.boxes');
         boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
@@ -36,6 +44,7 @@
             });
         });
 
+        }
 
     </script>
     

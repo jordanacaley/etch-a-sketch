@@ -5,12 +5,18 @@
 body {
     display: grid;
     justify-content: center;
+    grid-template-rows: auto auto;
+}
+
+#button {
+    margin: 25px;
+    padding: 15px;
 }
 
 #container {
     display: grid;
     width: 960px;
-    grid-template-columns: repeat(16, auto);
+    border: 2px solid black;
 }
 
 .boxes {
