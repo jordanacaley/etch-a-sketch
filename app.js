@@ -20,14 +20,14 @@ function defaultView(defaultInput) {
 
     addDivs(numberOfDivs);
 
-    // box color darkens by 20% with each pass through
+    // box color darkens by 33% with each pass through
     const boxes = document.querySelectorAll('.boxes');
     boxes.forEach((box) => { 
         box.count = 0;
         box.addEventListener('mouseover', (e) => {
             e.target.style.backgroundColor = 'black';
             e.target.count += 1;
-            e.target.style.opacity = 0.3 * e.target.count;                                     
+            e.target.style.opacity = 0.33 * e.target.count;                                     
         });
     });
 }
