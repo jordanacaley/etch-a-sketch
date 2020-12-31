@@ -7,9 +7,12 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    <button id="button">Click to set grid size</button>
-    <div id="container">
+    <div id="etch-a-sketch">
+        <h1>Etch-a-Sketch</h1>
+        <button id="button">Click to set grid size</button>
+        <div id="container">
 
+        </div>
     </div>
 
     <script>
@@ -58,7 +61,7 @@
         // let user set grid size0
          button.addEventListener('click', gridPrompt);
 
-        function gridPrompt() {
+        function gridPrompt() { 
             container.innerHTML = "";
 
             const userInput = prompt("Enter a number between 1-100", 16);
