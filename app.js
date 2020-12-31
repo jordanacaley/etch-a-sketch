@@ -1,5 +1,7 @@
 const container = document.getElementById('container');
 const button = document.getElementById('button');
+const groovy = document.getElementById('groovy');
+const clear = document.getElementById('clear');
 
 // load page with 75*75 grid
 let defaultInput = 75;
@@ -25,12 +27,36 @@ function defaultView(defaultInput) {
         box.addEventListener('mouseover', (e) => {
             e.target.style.backgroundColor = 'black';
             e.target.count += 1;
-            e.target.style.opacity = 0.2 * e.target.count;                                     
+            e.target.style.opacity = 0.3 * e.target.count;                                     
         });
     });
 }
 
 defaultView(defaultInput);
+
+// clear button
+clear.addEventListener('click', clearScreen);
+function clearScreen() {
+    window.location.reload();
+}
+
+// get groovy setting
+groovy.addEventListener('click', groovyFunction);
+
+function groovyFunction() {
+    const boxes = document.querySelectorAll('.boxes');
+    boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+            // Random RGB color for each pass through grid
+            let x = Math.floor(Math.random() * 256);
+            let y = Math.floor(Math.random() * 256);
+            let z = Math.floor(Math.random() * 256);
+            let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+            box.style.background = bgColor;
+            box.style.opacity = 1;                                 
+        });
+    });
+}
 
 // let user set grid size
 button.addEventListener('click', gridPrompt);
@@ -60,15 +86,12 @@ function gridPrompt() {
     addNewDivs(newDivs);
 
     const boxes = document.querySelectorAll('.boxes');
-    boxes.forEach((box) => {
-        box.addEventListener('mouseover', () => {
-            // Random RGB color for each pass through grid
-            let x = Math.floor(Math.random() * 256);
-            let y = Math.floor(Math.random() * 256);
-            let z = Math.floor(Math.random() * 256);
-            let bgColor = "rgb(" + x + "," + y + "," + z + ")";
-
-            box.style.background = bgColor;                                    
+    boxes.forEach((box) => { 
+        box.count = 0;
+        box.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = 'black';
+            e.target.count += 1;
+            e.target.style.opacity = 0.3 * e.target.count;                                     
         });
     });
 }
